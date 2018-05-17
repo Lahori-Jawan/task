@@ -1,0 +1,14 @@
+{
+    assets {
+        id
+        name
+        alert
+        operator
+        service
+        cds
+        distance
+        performance
+        level
+        dosing
+    }
+}

@@ -1,0 +1,14 @@
+mutation createAsset($data: AssetCreateInput!) {
+  createAsset (data: $data) {
+      id
+      name
+      alert
+      operator
+      service
+      cds
+      distance
+      performance
+      level
+      dosing
+  }
+}
