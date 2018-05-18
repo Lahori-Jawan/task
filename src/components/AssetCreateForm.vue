@@ -139,8 +139,8 @@
                     </div>
                 </div>
                   <p class="control">
-                      <a class="button is-primary" @click="createAsset">
-                      Create Asset
+                      <a class="button is-rounded is-link" @click="createAsset">
+                      New Asset
                     </a>
                 </p>
             </div>
