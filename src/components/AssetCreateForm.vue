@@ -82,7 +82,7 @@
                     <div class="field-body">
                         <div class="field">
                         <div class="control">
-                            <input class="input is-small" type="text" v-model="mutatationObject.performace" placeholder="performace">
+                            <input class="input is-small" type="text" v-model="mutatationObject.performance" placeholder="performance">
                         </div>
                         </div>
                     </div>
@@ -123,6 +123,7 @@
 </template>
 
 <script>
+import Assets from '@/graphql/Assets.gql'
 import newAsset from '@/graphql/createAsset.gql' ;
 export default {
   data () {
@@ -134,7 +135,7 @@ export default {
         service: '',
         cds: '',
         distance: '',
-        performace: '',
+        performance: '',
         level: '',
         dosing: ''
       }
@@ -142,13 +143,39 @@ export default {
   },
   methods: {
     createAsset () {
+      let asset = {};
+      let variables = this.mutatationObject
+      for(const key in variables) {
+        if(!variables[key].length) {
+          return
+        }
+      }
       this.$apollo.mutate({
-        mutatation: newAsset,
+        mutation: newAsset,
         variables: {
           data: { ...this.mutatationObject }
         },
-        update: (store, data) => {
-          console.log('data', data)
+        update: (store, {data: {createAsset}}) => {
+          asset = {...createAsset}
+          const cache = store.readQuery({ query: Assets })
+          cache.assets.push(createAsset)
+          store.writeQuery({ query: Assets, data: cache })
+          this.$emit('finish')
+        },
+        optimisticResponse: {
+          __typename: 'Mutation',
+          createAsset: {
+            __typename: 'Asset',
+            name: asset.name,
+            alert: asset.alert,
+            operator: asset.operator,
+            service: asset.service,
+            cds: asset.cds,
+            distance: asset.distance,
+            performance: asset.performance,
+            level: asset.level,
+            dosing: asset.dosing
+          },
         }
       })
     }

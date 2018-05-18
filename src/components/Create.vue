@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <AssetCreateForm v-if="showForm" v-on:close="showForm = false"></AssetCreateForm>
+        <AssetCreateForm v-if="showForm" @close="showForm = false" @finish="finishAsset" />
     </div>
 </template>
 
@@ -31,6 +31,13 @@ export default {
     data() {
       return {
         showForm: false
+      }
+    },
+    methods: {
+      finishAsset () {
+        this.showForm = false
+        this.$store.commit('TOGGLE_CREATE')
+        this.$store.commit('SCROLL_TO_BOTTOM', {height: (this.$parent.$el.scrollHeight+10000)})
       }
     },
     components: {

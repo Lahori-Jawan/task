@@ -18,7 +18,6 @@
 export default {
     data () {
         return {
-            create: false,
             shape1: 'hamburger',
             shape2: 'close',
             color1: { background: '#3A538E'},

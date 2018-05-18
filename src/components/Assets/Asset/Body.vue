@@ -13,9 +13,15 @@
 
 .level-left {
   flex-grow: 1;
+  max-width: 50%;
 }
 .level-right {
-    flex-grow: 1;
+  flex-grow: 1;
 }
+
+.level-right .image:first-child {
+  margin-right: 7px;
+}
+
 </style>
 

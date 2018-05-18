@@ -3,7 +3,7 @@
         <Topbar />
         <Overlay v-if="$store.state.create" />
         <Create v-if="$store.state.create" />
-        <Asset v-for="asset in assets" :key="asset.id" :asset="asset" />
+        <Asset :class="{'updated': addClass}"  v-for="asset in assets" :key="asset.id" :asset="asset" />
     </div>
 </template>
 
@@ -18,7 +18,8 @@ import Assets from '@/graphql/Assets.gql'
 export default {
     data () {
         return {
-            allAssets: []
+            allAssets: [],
+            addClass: false
         }
     },
     apollo: {
@@ -36,10 +37,15 @@ export default {
         Asset,
         Create,
         Overlay
+    },
+    updated () {
+      setTimeout(() => {
+        if(this.$store.state.scroll) this.$el.lastChild.style.background = '#ff63473b'
+      },1600)
+      setTimeout(() => {
+        this.$el.lastChild.style.background = 'transparent'
+        this.$store.commit('RESET_SCROLL')
+      }, 3000);
     }
 }
 </script>
-
-<style scoped>
-
-</style>

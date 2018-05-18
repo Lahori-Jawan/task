@@ -5,7 +5,7 @@
         </Headr>
         <Body>
             <ul slot="content">
-                <li v-for="(value, key, index) in asset" :key="`${value}-${key}-${index}`" v-if="key !== 'name'">
+               <li class="icon-new" v-for="(value, key, index) in asset" :key="`${value}-${key}-${index}`" v-if="key !== 'id' && key !== '__typename'  ">
                     - {{ key }}: {{ value }}
                 </li>
             </ul>
@@ -50,7 +50,7 @@ export default {
     components: {
         'Headr': Header,
         Body
-    }
+    },
 }
 </script>
 
@@ -69,7 +69,7 @@ export default {
 .asset li {
     color: #000;
     list-style: none;
-    font-weight: bold;
+    font-weight: 12px;
     margin-top: 0 !important;
     text-transform: capitalize;
 }
