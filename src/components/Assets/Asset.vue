@@ -10,11 +10,6 @@
                 </li>
             </ul>
             <template slot="levels">
-                <!-- <div class="level-item">
-                    <div class="image">
-                        <img :src="getLevel" alt="">
-                    </div>
-                </div> -->
                 <div class="level-item">
                     <div class="image">
                         <img :src="getLevel" alt="">
@@ -72,6 +67,10 @@ export default {
     font-weight: 12px;
     margin-top: 0 !important;
     text-transform: capitalize;
+}
+
+.level-item {
+    justify-content: space-evenly;
 }
 
 </style>

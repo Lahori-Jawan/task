@@ -18,7 +18,7 @@ const store = new Vuex.Store({
       state.scroll = true
       setTimeout(() => {
           window.scrollTo(0, height)
-        }, 1500)
+        }, 1000)
     },
   },
 });

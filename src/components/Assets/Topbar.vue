@@ -1,15 +1,17 @@
 <template>
-    <article id="topbar" class="media" :style="[$store.state.create ? color2: color1]">
-        <figure class="media-left" @click="$store.commit('TOGGLE_CREATE')">
-            <img :src="getShape" alt="Hamburger logo">
-        </figure>
-        <div class="media-content">
-            <div class="content">
-                Assets
-            </div>
-        </div>
-        <div class="media-right">
-            <img src="@/assets/search.svg" alt="Search logo">
+    <article id="topbar" :style="[$store.state.create ? color2: color1]">
+        <div class="media container is-tablet">
+          <figure class="media-left" @click="$store.commit('TOGGLE_CREATE')">
+              <img :src="getShape" alt="Hamburger logo">
+          </figure>
+          <div class="media-content">
+              <div class="content">
+                  Assets
+              </div>
+          </div>
+          <div class="media-right">
+              <img src="@/assets/search.svg" alt="Search logo">
+          </div>
         </div>
     </article>
 </template>

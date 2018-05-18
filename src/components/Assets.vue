@@ -41,11 +41,11 @@ export default {
     updated () {
       setTimeout(() => {
         if(this.$store.state.scroll) this.$el.lastChild.style.background = '#ff63473b'
-      },1600)
+      },1200)
       setTimeout(() => {
         this.$el.lastChild.style.background = 'transparent'
         this.$store.commit('RESET_SCROLL')
-      }, 3000);
+      }, 2500);
     }
 }
 </script>

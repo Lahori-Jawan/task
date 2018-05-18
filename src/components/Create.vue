@@ -1,22 +1,24 @@
 <template>
     <div id="create-container">
-        <article class="media asset-header">
-            <a class="new media-left" @click="showForm = true">
-                new icon
-            </a>
-            <div class="media-content">
-                <p class="title">
-                    Create new Asset
-                </p>
-                <p class="subtitle">
-                    Add new Asset
-                </p>
-            </div>
-        </article>
-        <div class="content copyrights">
-            <div class="has-text-centered">
-                Dataharmonics @ All rights reserved 2018.
-            </div>
+        <div class="create-background">
+            <article class="media asset-header">
+              <a class="new media-left" @click="showForm = true">
+                  new icon
+              </a>
+              <div class="media-content">
+                  <p class="title">
+                      Create new Asset
+                  </p>
+                  <p class="subtitle">
+                      Add new Asset
+                  </p>
+              </div>
+          </article>
+          <div class="content copyrights">
+              <div class="has-text-centered">
+                  Dataharmonics @ All rights reserved 2018.
+              </div>
+          </div>
         </div>
 
         <AssetCreateForm v-if="showForm" @close="showForm = false" @finish="finishAsset" />
@@ -53,6 +55,14 @@ export default {
     z-index: 9;
     height: 100%;
 }
+
+@media screen and (min-width: 1280px) {
+  .create-background {
+     background: #F1F1F1;
+     padding: 0 107px;
+  }
+}
+
 .media.asset-header {
     height: 59px;
     margin-top: 0;
